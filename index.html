@@ -1,166 +1,285 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Page Title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-        body {
-    
-} * {
-      margin: 0;
-      box-sizing: border-box;
-    }
-    canvas {        
-      background: #040015;
-      opacity: 0;
-      -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
-    }
-    canvas.show {
-      animation: helloWorld .5s ease-in 1;
-      animation-fill-mode: forwards;
-      transform-origin: top;
-      opacity: 1;
-    }
-    body {
-      overflow: hidden;
-      font-family: Arial, Helvetica, sans-serif;
-      text-transform: uppercase;
-      perspective: 500px;
-      perspective-origin: top;
-    }
-    body > div {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      background: #555;
-      padding: 10px 0;
-      text-align: center;
-      color: #fff;
-      font-size: 20px;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    body > div > span {
-      margin-left:  10px;
-    }
-    body button {
-      border: 0;
-      background: #555;
-      text-transform: uppercase;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      color: #fff;
-      box-shadow: inset 0px 0px 0px 2px #fff;
-      padding: 5px 10px;
-    }
-    body button:focus {
-      outline: 0;
-    }
-    body button:hover {
-      outline: 0;
-      transform: translateY(-10%);
-    }
-    .leaderboards {
 
-    } 
-    .leaderboards__list {
-      
-    }
-    @keyframes helloWorld {
-      0% {
-        transform: rotateX(-90deg);
-      }
-      100% {
-        transform: rotateX(0deg);
-      }
-    }
-    .overlay {
-      background: url(./bg.jpg);
-      -webkit-background-size: cover;
-      background-size: cover;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 101;
-      width: 100%;
-      height: 100%;
-      z-index: 200;
-      pointer-events: all;
-    }
-    .overlay.hidden {
-      opacity: 0;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .leaderboard {
-      max-width: 600px;
-      width: inherit;
-      max-height: 300px;
-      max-height: 60vh;
-      overflow: scroll;
-    }
-    .leaderboard__your-score {
-      width: 100%;
-      background: #fff;
-      padding: 20px;
-      font-size: 18px;
-      color: #000;
-      margin-bottom: 20px;
-    }
-    .leaderboard_list {
-      width: 100%;
-      background: #fff;
-      padding: 20px;
-      color: #000;
-      table-layout: fixed;
-    }
-    td {
-        word-break: break-all;
-    }
-    tr {
-      margin-bottom: 10px;
-    }
-    tr:nth-child(odd) {
-      background: #eee;
-    }
-        </style>
-    </head>
-    <body>
-        <div>
-      <button id="startButton"> Start </button>
-      <button id="pauseButton"> Pause </button>
-      <button id="stopButton"> Stop </button>
-      <span> Score: <span id="score"> 0 </span> </span>
-      <span> Lives: <span id="lives"> 5 </span> </span>
-    </div>
-    <canvas id="canvas"></canvas>
+<head>
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("https://dl.dropbox.com/s/z93vaufz61mwi2y/FEdH.gif");
+        }
+        
+        .wish {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 4%;
+            width: 100%;
+            text-align: center;
+            font-size: 3em;
+            color: red;
+            letter-spacing: 0.1em;
+            font-family: 'Pacifico', cursive;
+            background: -webkit-linear-gradient(#ffff00, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-animation: hue 3s infinite ease-in-out;
+        }
+        
+        @-webkit-keyframes hue {
+            0% {
+                -webkit-filter: hue-rotate(0deg);
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                -webkit-filter: hue-rotate(360deg);
+                transform: scale(1.2) rotate(5deg);
+            }
+        }
+        
+        .cake {
+            position: absolute;
+            width: 250px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            margin-top: -70px;
+            margin-left: -125px;
+        }
+        
+        .plate {
+            position: absolute;
+            width: 290px;
+            height: 130px;
+            bottom: -10px;
+            left: -15px;
+            background-color: #ccc;
+            border-radius: 25%;
+            box-shadow: 0 5px 0 0 #000;
+        }
+        
+        .cake>* {
+            position: absolute;
+        }
+        
+        .layer {
+            position: absolute;
+            display: block;
+            width: 250px;
+            height: 100px;
+            border-radius: 25%;
+            background-color: #2a0a0a;
+            border: 3px solid #fff;
+            box-shadow: 0 15px 0 0 #2a0a0a, 0 30px 0 0 #2a0a0a, 0 33px 0 0 #fff, 0 45px 0 0 #2a0a0a, 0 60px 0 0 #2a0a0a, 0 63px 0 0 #fff, 0 75px 0 0 #2a0a0a, 0 90px 0 0 #2a0a0a;
+        }
+        
+        .icing {
+            top: 3px;
+            left: 3px;
+            background-color: #fff;
+            border: 5px dotted #2a0a0a;
+            width: 240px;
+            height: 90px;
+            border-radius: 25%;
+        }
+        
+        .name {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            font-size: 1em;
+            color: #2a0a0a;
+            font-family: 'Pacifico', cursive;
+        }
+        
+        .candle1 {
+            z-index: 10;
+            width: 10px;
+            height: 50px;
+            background-color: #fe2e2e;
+            border-radius: 4px;
+            top: -25px;
+            left: 50%;
+            margin-left: -8px;
+        }
+        
+        .flame1 {
+            border-bottom-left-radius: 45% 35%;
+            border-bottom-right-radius: 45% 35%;
+            box-shadow: 0 -15px 2px 2px #ffc205;
+            background-color: yellow;
+            border-radius: 50%;
+            height: 30px;
+            width: 5px;
+            top: -30px;
+            left: 30%;
+            position: absolute;
+        }
+        
+        .candle2 {
+            z-index: 10;
+            width: 10px;
+            height: 50px;
+            background-color: #fe2e2e;
+            border-radius: 4px;
+            top: -25px;
+            left: 80%;
+            margin-left: -8px;
+        }
+        
+        .flame2 {
+            border-bottom-left-radius: 45% 35%;
+            border-bottom-right-radius: 45% 35%;
+            box-shadow: 0 -15px 2px 2px #ffc205;
+            background-color: yellow;
+            border-radius: 50%;
+            height: 30px;
+            width: 5px;
+            top: -30px;
+            left: 30%;
+            position: absolute;
+        }
+        
+        .candle3 {
+            z-index: 10;
+            width: 10px;
+            height: 50px;
+            background-color: #fe2e2e;
+            border-radius: 4px;
+            top: -25px;
+            left: 20%;
+            margin-left: -8px;
+        }
+        
+        .flame3 {
+            border-bottom-left-radius: 45% 35%;
+            border-bottom-right-radius: 45% 35%;
+            box-shadow: 0 -15px 2px 2px #ffc205;
+            background-color: yellow;
+            border-radius: 50%;
+            height: 30px;
+            width: 5px;
+            top: -30px;
+            left: 30%;
+            position: absolute;
+        }
+        
+        .candle4 {
+            z-index: 10;
+            width: 10px;
+            height: 50px;
+            background-color: #fe2e2e;
+            border-radius: 4px;
+            top: 15px;
+            left: 15%;
+            margin-left: -8px;
+        }
+        
+        .flame4 {
+            border-bottom-left-radius: 45% 35%;
+            border-bottom-right-radius: 45% 35%;
+            box-shadow: 0 -15px 2px 2px #ffc205;
+            background-color: yellow;
+            border-radius: 50%;
+            height: 30px;
+            width: 5px;
+            top: -30px;
+            left: 30%;
+            position: absolute;
+        }
+        
+        .candle5 {
+            z-index: 10;
+            width: 10px;
+            height: 50px;
+            background-color: #fe2e2e;
+            border-radius: 4px;
+            top: 15px;
+            left: 85%;
+            margin-left: -8px;
+        }
+        
+        .flame5 {
+            border-bottom-left-radius: 45% 35%;
+            border-bottom-right-radius: 45% 35%;
+            box-shadow: 0 -15px 2px 2px #ffc205;
+            background-color: yellow;
+            border-radius: 50%;
+            height: 30px;
+            width: 5px;
+            top: -30px;
+            left: 30%;
+            position: absolute;
+        }
+        
+        .text {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 80%;
+            width: 100%;
+            text-align: center;
+            font-size: 1em;
+            color: white;
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+</head>
+
+<body>
     <script>
-    function Game(a,b,c,d){var e=this;this.canvas=document.getElementById(a||"canvas"),this.ctx=this.canvas.getContext("2d"),this.$startButton=document.getElementById(b||"startButton"),this.$stopButton=document.getElementById(c||"stopButton"),this.$pauseButton=document.getElementById(d||"pauseButton"),this.$scoreOutput=document.getElementById("score"),this.$livesOutput=document.getElementById("lives"),this.$overlay=document.getElementById("overlay"),this.$finalScoreOutput=document.getElementById("yourScore"),this.$scoreTable=document.getElementById("leaderBoards"),this.$submitScore=document.getElementById("submitScore"),this.$closeLeaderBoard=document.getElementById("closeLeaderBoard"),this.$nameInput=document.getElementById("nameInput"),this.calculateCnavasSize=function(){this.canvas.width=window.innerWidth,this.canvas.height=window.innerHeight,e.canvasWidth=this.canvas.clientWidth,e.canvasHeight=this.canvas.clientHeight,window.addEventListener("resize",function(){e.canvas.width=window.innerWidth,e.canvas.height=window.innerHeight,e.canvasWidth=this.canvas.clientWidth,e.canvasHeight=this.canvas.clientHeight})}(),this.$startButton.addEventListener("click",function(){return 1===e.gameState.isPlaying&&e.gameState.isPaused!==!0?void alert("game is already in process, press stop and start to restart game"):(e.$startButton.innerText="Start",e.gameState.isPlaying=1,window.clickCallback=e.gameFunctions.checkSquareIsClicked,e.helpFunctions.listenClick(e.canvas,e.helpFunctions.handleClick),e.canvas.classList.add("show"),e.gameFunctions.generateSquares(),e.gameState.isPaused===!0&&(e.gameState.isPaused=!1),e.$startButton.innerText="Start",void console.log(e.gameState))}),this.$closeLeaderBoard.addEventListener("click",function(){e.helpFunctions.hideLeaderBoard()}),this.$pauseButton.addEventListener("click",function(){0!=e.gameState.isPlaying&&(e.helpFunctions.removeClick(e.canvas,e.helpFunctions.handleClick),e.gameState.isPaused=!0,e.$startButton.innerText="Continue",console.log(e.gameState))}),this.stopGame=function(){e.gameState.isPlaying=0,e.helpFunctions.removeClick(e.canvas,e.helpFunctions.handleClick),e.$startButton.innerText="Start",e.gameFunctions.resetGame(),e.canvas.classList.remove("show")},this.$stopButton.addEventListener("click",e.stopGame),this.leadersScore={},this.gameSettingsDefault={maxSquares:5,maxFallDownSpeed:1,maxSquareYOffset:10,scoreMultiplier:1,squareSize:100,lives:5},this.gameSettings={maxSquares:this.gameSettingsDefault.maxSquares,maxFallDownSpeed:this.gameSettingsDefault.maxFallDownSpeed,maxSquareYOffset:this.gameSettingsDefault.maxSquareYOffset,scoreMultiplier:this.gameSettingsDefault.scoreMultiplier,squareSize:this.gameSettingsDefault.squareSize},this.gameState={isPlaying:0,score:0,lives:5,isPaused:!1,finalScore:0},this.gameStorage={squares:[]},this.objects={Square:function(a,b,c,d,f){this.w=c||e.gameSettings.squareSize||100,this.h=d||e.gameSettings.squareSize||100,this.startY=-(Math.floor(Math.random()*(this.h*e.gameSettings.maxSquareYOffset-20))+20),this.y=b||this.startY||this.h,this.fallDownSpeed=parseFloat((Math.random()*(e.gameSettings.maxFallDownSpeed-1)).toFixed(0))+1,this.color=f||e.gameFunctions.generateRandomColor(),this.fallDown=function(){this.y+=this.fallDownSpeed},this.calcluateStartX=function(){return Math.floor(Math.random()*(e.canvasWidth-this.w))+0},this.x=a||this.calcluateStartX(),this.respawnSquare=function(){this.color=e.gameFunctions.generateRandomColor(),this.startY=-(Math.floor(Math.random()*(this.h*e.gameSettings.maxSquareYOffset-20))+20),this.y=this.startY,this.x=this.calcluateStartX(),this.w=e.gameSettings.squareSize,this.h=e.gameSettings.squareSize,this.fallDownSpeed=this.calculareRandomFallDownSpeed(),console.log("square is respawned","new y is"+this.y),console.log("square is respawned","new x is"+this.x),console.log("new color is"+this.color)},this.calculareRandomFallDownSpeed=function(){return parseFloat((Math.random()*(e.gameSettings.maxFallDownSpeed-1)).toFixed(0))+1},this.checkOutOfScreen=function(){return this.y>=e.canvasHeight&&(e.gameFunctions.renderLives(-1),e.gameFunctions.checkIsAlive(),console.log("square is out of the screen",this),this.respawnSquare(),void 0)}}},this.gameFunctions={clearWindow:function(){e.ctx.clearRect(0,0,e.canvasWidth,e.canvasHeight)},increaseScore:function(a){e.gameState.score+=a||1*e.gameSettings.scoreMultiplier,e.$scoreOutput.innerText=e.gameState.score},renderLives:function(a){var a=a||e.gameSettingsDefault.lives;e.gameState.lives+=a,e.$livesOutput.innerText=e.gameState.lives},checkIsAlive:function(){e.gameState.lives<=0&&(e.$submitScore.addEventListener("click",function(){e.netFunctions.sendUserScore()}),e.helpFunctions.showLeaderBoard(),e.netFunctions.getUserScore(),e.stopGame())},renderSquares:function(a){if(e.gameState.isPaused!==!0&&0!=e.gameState.isPlaying)for(var b=0;b<a.length;b++)e.ctx.fillStyle=a[b].color,e.ctx.fillRect(a[b].x,a[b].y,a[b].w,a[b].h),a[b].checkOutOfScreen(),a[b].fallDown()},generateSquares:function(){for(var a=0;a<e.gameSettings.maxSquares;a++){var b=e.gameFunctions.createSquare(null,null,null,null,null);e.gameStorage.squares.push(b),console.log("new square",b,"is created and stored in squares array")}console.log(e.gameStorage.squares)},createSquare:function(a,b,c,d,f){return new e.objects.Square(a,b,c,d,f)},generateRandomColor:function(){return"rgb("+parseFloat((255*Math.random()).toFixed(0))+","+parseFloat((255*Math.random()).toFixed(0))+","+parseFloat((255*Math.random()).toFixed(0))+")"},resetGame:function(){e.gameStorage.squares=[],e.gameState.score=0,e.gameState.lives=0,e.gameFunctions.renderLives(),e.$scoreOutput.innerText=e.gameState.score;for(key in e.gameSettings)e.gameSettings[key]=e.gameSettingsDefault[key]},checkSquareIsClicked:function(a){var b,c;a.touches?(b=event.targetTouches[0].pageX,c=event.targetTouches[0].pageY):(b=a.clientX,c=a.clientY);for(var f=0;f<e.gameStorage.squares.length;f++){var g=e.gameStorage.squares[f].x,h=e.gameStorage.squares[f].y,i=e.gameStorage.squares[f].w,j=e.gameStorage.squares[f].h;b>=g&&b<=g+i&&c>=h&&c<=h+j&&(e.gameStorage.squares[f].respawnSquare(),e.gameFunctions.increaseScore(),console.log("you clicked!"),e.gameFunctions.gameAdmin())}},gameAdmin:function(){return e.gameFunctions.checkIsAlive()===!1?(alert("game over"),e.gameState.isPlaying=0,e.helpFunctions.removeClick(e.canvas,e.helpFunctions.handleClick),e.gameState.isPlaying=0,e.$startButton.innerText="Start",e.gameFunctions.resetGame(),void e.canvas.classList.remove("show")):(e.gameSettings.maxFallDownSpeed=1*e.gameState.score,e.gameSettings.squareSize=e.gameSettingsDefault.squareSize-Math.floor(1*e.gameState.score),void console.log(e.gameSettings.squareSize))}},this.helpFunctions={listenClick:function(a,b){var c=!1;"ontouchstart"in window?c=!0:window.navigator.msPointerEnabled&&(c=!0),c?(alert("Touch the boxes -- Vishnu"),a.addEventListener("touchstart",b,!1)):a.addEventListener("click",b,!1)},removeClick:function(a,b){var c=!1;"ontouchstart"in window?c=!0:window.navigator.msPointerEnabled&&(c=!0),c?a.removeEventListener("touchstart",b,!1):a.removeEventListener("click",b,!1)},handleClick:function(a){a.preventDefault(),a.stopPropagation(),a.callback=window.clickCallback,window.clickCallback(a)},showLeaderBoard:function(){e.$overlay.classList.remove("hidden")},hideLeaderBoard:function(){e.$overlay.classList.add("hidden")},preventInputfromSpan:function(a){a.addEventListener("change",function(a){a.target.value.length>=20&&(a.target.value=a.target.value.toString().substr(0,20))})}},this.netFunctions={sendUserScore:function(){var a=new XMLHttpRequest;a.open("post","https://html5canvasgame.herokuapp.com/post",!0),a.setRequestHeader("Content-Type","application/json;charset=UTF-8");var b=e.gameState.finalScore,c=e.$nameInput.value;a.send(JSON.stringify({username:c,score:b})),setTimeout(function(){e.netFunctions.getUserScore()},500)},getUserScore:function(){e.$scoreTable.innerHTML="Loading..",e.gameState.finalScore=e.gameState.score,e.$finalScoreOutput.innerHTML=e.gameState.score;var a=new XMLHttpRequest;a.open("GET","https://html5canvasgame.herokuapp.com/get",!0),a.setRequestHeader("Content-Type","application/json;charset=UTF-8"),a.onreadystatechange=function(){if(4==a.readyState&&200==a.status){e.helpFunctions.showLeaderBoard();var b=JSON.parse(a.responseText);b=function(){return b.sort(function(a,b){var c=a.score,d=b.score;return c>d?-1:c<d?1:0})}(),e.$scoreTable.innerHTML="";var c="<tr><th>Username</th><th>Score</th>",d=c;b.forEach(function(a){a.username&&a.username.toString().length>40&&(a.username=a.username.toString().slice(0,35)+"..."),a.score&&a.score.toString().length>40&&(a.score=a.score.toString().slice(0,35)+"..."),d+="<tr><td>"+a.username+"</td><td>"+a.score+"</td></tr>"}),e.$scoreTable.innerHTML=d}},a.send()}}}window.addEventListener("load",function(){window.game=new Game,game.helpFunctions.preventInputfromSpan(game.$nameInput),function a(){game.gameFunctions.clearWindow(),game.gameFunctions.renderSquares(game.gameStorage.squares),requestAnimationFrame?requestAnimationFrame(a):webkitRequestAnimationFrame?webkitRequestAnimationFrame(a):alert("Your browser does not supports RequestAnimationFrame")}()});</script>
-    <div id="overlay" class="overlay hidden">
-      <div class="leaderboard">
-        <button id="closeLeaderBoard">Close</button>
-        <div class="leaderboard__your-score">
-          <div style="line-height: 2">Your score is <span id="yourScore" style="color:yellow; background: #000; 
-          padding:5px">20</span>!!<br> A Game by VISHNU aka Iamkvv <br> Submit your Name for Your Fame💖<br>Reload the game to play again<br>
-          <input type="text" placeholder="Enter your Name...." id="nameInput">
-          <button id="submitScore">Submit</button>
-          <div class="error"></div>
-          </div>
+        alert("Touch the cake🎂 and Enjoy the party🎶🎶");
+
+        window.addEventListener('click', function() {
+
+            var audio = document.getElementById("HBD");
+            audio.play();
+
+        });
+    </script>
+    <div class="wish">
+        Happy Birthday
+    </div>
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer"></div>
+        <div class="icing">
+            <div class="name">
+                <p>Dear Bhargavi Lakshmi</p>
+            </div>
         </div>
-        <table class="leaderboard_list" id="leaderBoards">
-        </table>
-      </div>
-    </div>     
+        <div class="candle1">
+            <div class="flame1"></div>
+        </div>
+
+        <div class="candle2">
+            <div class="flame2"></div>
+        </div>
+
+        <div class="candle3">
+            <div class="flame3"></div>
+        </div>
+
+        <div class="candle4">
+            <div class="flame4"></div>
+        </div>
+
+        <div class="candle5">
+            <div class="flame5"></div>
+        </div>
+    </div>
+
+    <div class="text">
+        Enjoy Your day. It's a Small Gift from Us. Happy birthday Bhargavi Lakshmi!
+    </div>
+
+    <audio id="HBD" loop>
+         <source src="https://dl.dropbox.com/s/c6aq63o2mwuvkui/Happy-Birthday-to-you-Singing-Bell.mp3">
+      </audio>
 </body>
-  
+
 </html>
